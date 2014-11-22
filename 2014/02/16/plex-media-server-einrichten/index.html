@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Plex Media Server einrichten - Just My Two Cents</title>
+  <meta name="author" content="Nils Lutz">
+
+  
+  <meta name="description" content="Heute hatte ich endlich die Zeit mich mit dem Medien Server Plex auseinander zusetzen. Bisher habe ich immer den PS3 Media Server benutzt, welcher &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://nlsltz.github.io/2014/02/16/plex-media-server-einrichten/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Just My Two Cents" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Playball" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-52478234-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Just My Two Cents</a></h1>
+  
+    <h2>Linux, Raspberry Pi, Android</h2>
+  
+</hgroup>
+
+</header>
+  <div id="navigation">
+    <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:nlsltz.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  </div>
+  <div id="body"  >
+    <div id="main">
+      <div id="content">
+        <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Plex Media Server Einrichten</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-16T16:11:20+01:00" pubdate data-updated="true"></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img class="right" src="/images/plex-logo.png" width="300" height="300" title="Plex Logo" alt="Plex Logo">Heute hatte ich endlich die Zeit mich mit dem Medien Server <a href="https://plex.tv/">Plex</a> auseinander zusetzen. Bisher habe ich immer den <a href="http://www.ps3mediaserver.org/">PS3 Media Server</a> benutzt, welcher mir aber mehr und mehr missfiel. Das größte Problem waren fiese Ruckler, verursacht durch die DTS 5.1 Tonspur in den Filmen, durch die es einfach unmöglich war einige Filme sauber vom Rechner ins Wohnzimmer an den TV zu streamen. Der in meinem TV verbaute Soundchip schafft es einfach nicht gestreamten DTS Sound, ohne ständiges nachladen, flüssig abzuspielen. Also musste was neues her!<!-- more --> Der Plex Media Server bot sich an, da ich ihn einerseits schon vor Ewigkeiten mal auf dem Rechner installiert hatte und andererseits in diversen Blogs und Foren immer wieder von ihm, als sehr gute Alternative zum PS3 Media Server, gesprochen wurde. Warum ich damals nicht direkt bei Plex geblieben bin weiß ich heute gar nicht mehr so recht, es war eine sehr frühe Version soviel ist klar und die lief dementsprechend weniger gut als der PS3 Media Server. Ich wollte etwas einfaches, schnelles und unkompliziertes. Das war damals bei Plex eben alles andere als gegeben. Heute sieht es definitiv anders aus. Der Plex Server rennt wie eine eins ohne Murren und Zickerei bisher. Ich habe keine Ruckler mehr, selbst bei Filmen in denen mir nur eine DTS Tonspur zur Verfügung steht. Plex hat eine Option um DTS Tonspuren on-the-fly in normales Stereo zu konvertieren. Außerdem habe ich mit Plex den großen Vorteil, dass mir meine Mediensammlung (Filme, Musik, Serien) nun auch sehr komfortabel von Unterwegs aus zur Verfügung steht. Das war mit dem PS3 Media Server nur über sehr umständliche Wege machbar. Plex bietet für die beiden großen mobilen Systeme (iOS, Android) super Apps an und auch eine Web-App steht bereit. So genug erzählt, komme ich nun mal zur Installation des Servers selbst.</p>
+
+<p>Als erstes laden wir uns mal das Paket von der Plex Seite auf unseren Rechner und installieren es.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>wget http://downloads.plexapp.com/plex-media-server/0.9.8.18.290-11b7fdd/plexmediaserver_0.9.8.18.290-11b7fdd_amd64.deb
+</span><span class='line'>dpkg -i plexmediaserver_0.9.8.18.290-11b7fdd_amd64.deb
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Haben wir das erledigt, stoppen wir den automatisch gestarteten Plex Server und öffnen die Konfiguration um den User, unter welchem Plex ausgeführt wird, zu ändern. In meinem Fall von <code>plex</code> zu <code>ikarus</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo service plexmediaserver stop
+</span><span class='line'>sudo nano /etc/default/plexmediaserver
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">PLEX_MEDIA_SERVER_USER</span><span class="o">=</span>ikarus
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Darauf folgend muss unser User noch der Gruppe <code>plex</code> hinzugefügt werden. Außerdem sollte man allen Verzeichnissen und den enthaltenen Medien, die der Plex Server verwalten soll, die entsprechenden Berechtigungen geben.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo usermode -aG plex ikarus
+</span><span class='line'>find /verzeichnis/ -type d -exec chmod <span class="m">755</span> <span class="o">{}</span> +
+</span><span class='line'>find /verzeichnis/ -type f -exec chmod <span class="m">644</span> <span class="o">{}</span> +
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Haben wir auch das bewerkstelligt kann der Plex Media Server wieder gestartet und über die URL <code>http://localhost:32400/manage/index.html</code> das Frontend bedient werden.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo service plexmediaserver start
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+Alles weitere zum Einstellen des Plex Media Servers selbst, also welche Verzeichnisse nun tatsächlich verwaltet werden sollen, welche Metadaten Datenbank verwendet wird und und und ist zum Einen ziemlich selbsterklärend im Frontend gelöst und zum Anderen auf der Website von Plex selbst auch noch einmal gut mit Bildern und Erklärungen verdeutlicht. Viel Spaß beim selber Einrichten :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Nils Lutz</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-16T16:11:20+01:00" pubdate data-updated="true"></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://nlsltz.github.io/2014/02/16/plex-media-server-einrichten/" data-via="" data-counturl="http://nlsltz.github.io/2014/02/16/plex-media-server-einrichten/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2014/02/09/default-user-und-swap-grosse-des-raspberry-pi-andern/" title="Previous Post: Default User und Swap Grösse des Raspberry Pi ändern">&laquo; Default User und Swap Grösse des Raspberry Pi ändern</a>
+      
+      
+        <a class="basic-alignment right" href="/2014/09/04/umstieg-von-wordpress-auf-octopress/" title="Next Post: Umstieg von Wordpress auf Octopress">Umstieg von Wordpress auf Octopress &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/10/21/openvpn-auf-dem-raspberry-pi-einrichten/">OpenVPN auf dem RaspberryPi einrichten</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/09/04/umstieg-von-wordpress-auf-octopress/">Umstieg von Wordpress auf Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/16/plex-media-server-einrichten/">Plex Media Server einrichten</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/09/default-user-und-swap-grosse-des-raspberry-pi-andern/">Default User und Swap Grösse des Raspberry Pi ändern</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/02/07/hello-world/">Hello World!</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/nlsltz">@nlsltz</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'nlsltz',
+            count: 0,
+            skip_forks: false,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+      </div>
+    </div>
+    <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Nils Lutz -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a></span>
+</p>
+
+</footer>
+    
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </div>
+</body>
+</html>
