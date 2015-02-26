@@ -1,0 +1,63 @@
+<div class="highlight"><pre>mode server
+tls-server
+
+<span class="c"># virtual interface for vpn</span>
+dev tun
+
+<span class="c"># protocol for port</span>
+proto udp
+
+<span class="c"># port for vpn</span>
+port 1194
+
+<span class="c"># keys and certificates</span>
+ca /etc/openvpn/easy-rsa/keys/ca.crt
+cert /etc/openvpn/easy-rsa/keys/server.crt
+key /etc/openvpn/easy-rsa/keys/server.key
+dh /etc/openvpn/easy-rsa/keys/dh2048.pem
+
+<span class="c"># tls-auth server</span>
+key-direction 0
+tls-auth /etc/openvpn/easy-rsa/keys/ta.key
+
+<span class="c"># cipher suites</span>
+cipher AES-256-CBC
+auth SHA512
+tls-cipher DHE-RSA-AES256-SHA
+
+<span class="c"># user and group</span>
+user nobody
+group nogroup 
+
+<span class="c"># used subnet for vpn</span>
+server 10.0.1.0 255.255.255.0
+
+<span class="c"># persistance</span>
+persist-key
+persist-tun
+
+<span class="c"># logging</span>
+status /var/log/openvpn-status.log
+verb 3
+log-append /var/log/openvpn
+
+<span class="c"># routing</span>
+client-to-client
+push <span class="s2">&quot;redirect-gateway def1 bypass-dhcp&quot;</span>
+push <span class="s2">&quot;dhcp-option DNS 85.214.20.141&quot;</span>
+push <span class="s2">&quot;dhcp-option DNS 8.8.8.8&quot;</span>
+
+<span class="c"># compression</span>
+comp-lzo
+
+<span class="c"># keep vpn session alive</span>
+keepalive <span class="m">10</span> 120
+
+<span class="c"># user auth with username/password</span>
+<span class="p">;</span>plugin /usr/lib/openvpn/openvpn-auth-pam.so login
+<span class="p">;</span>client-cert-not-required<span class="p">;</span>
+<span class="p">;</span>username-as-common-name
+
+<span class="c"># certificate revocation list</span>
+<span class="p">;</span>crl-verify /etc/openvpn/crl.pem
+</pre></div>

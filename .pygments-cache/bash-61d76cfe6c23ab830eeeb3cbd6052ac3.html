@@ -1,0 +1,14 @@
+<div class="highlight"><pre>server <span class="o">{</span>
+        listen 80<span class="p">;</span>
+        root /var/www<span class="p">;</span>
+        index index.php index.html index.htm<span class="p">;</span>
+
+        location ~ <span class="o">[</span>^/<span class="o">]</span>.php<span class="o">(</span>/<span class="p">|</span><span class="nv">$)</span> <span class="o">{</span>
+                try_files <span class="nv">$uri</span> <span class="o">=</span>404<span class="p">;</span>
+                fastcgi_split_path_info ^<span class="o">(</span>.+?.php<span class="o">)(</span>/.*<span class="o">)</span><span class="nv">$;</span>
+                fastcgi_pass unix:/var/run/php5-fpm.sock<span class="p">;</span>
+                fastcgi_index index.php<span class="p">;</span>
+                include fastcgi_params<span class="p">;</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
