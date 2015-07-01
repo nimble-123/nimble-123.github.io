@@ -22,7 +22,7 @@
         "name":"",
         "wea_count":"24",
         "wea_type":"E-128",
-        "value": "26.000.000,00",
+        "value": "XX,xx",
         "currency": "EUR",
         "extras":"/w substation"
       }
@@ -49,7 +49,7 @@
         "name":"",
         "wea_count":"24",
         "wea_type":"E-128",
-        "value":"26.000.000,00",
+        "value":"XX,xx",
         "currency": "EUR",
         "extras":"/w substation"
       }
@@ -76,7 +76,7 @@
         "name":"",
         "wea_count":"24",
         "wea_type":"E-128",
-        "value":"26.000.000,00",
+        "value":"XX,xx",
         "currency": "EUR",
         "extras":"/w substation"
       }
