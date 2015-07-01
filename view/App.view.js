@@ -1,7 +1,7 @@
-sap.ui.jsview("abat.Mockup.view.App", {
+sap.ui.jsview("dpa.view.App", {
 
   getControllerName : function() {
-    return "abat.Mockup.view.App";
+    return "dpa.view.App";
   },
 
   createContent : function(oController) {
@@ -14,17 +14,17 @@ sap.ui.jsview("abat.Mockup.view.App", {
     this.app = new sap.m.SplitApp();
 
     // load the master page
-    var master = sap.ui.xmlview("Master", "abat.Mockup.view.Master");
+    var master = sap.ui.xmlview("Master", "dpa.view.Master");
     master.getController().nav = this.getController();
     this.app.addPage(master, true);
 
     // load the empty page
-    var empty = sap.ui.xmlview("Empty", "abat.Mockup.view.Empty");
+    var empty = sap.ui.xmlview("Empty", "dpa.view.Empty");
     this.app.addPage(empty, false);
 
     // wrap app with shell
     return new sap.m.Shell("Shell", {
-      title : "{i18n>ShellTitle}",
+      title : "{i18n>Title_Shell}",
       showLogout : false,
       app : this.app
     });

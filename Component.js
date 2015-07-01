@@ -1,13 +1,13 @@
-jQuery.sap.declare("abat.Mockup.Component");
+jQuery.sap.declare("dpa.Component");
 
-sap.ui.core.UIComponent.extend("abat.Mockup.Component", {
+sap.ui.core.UIComponent.extend("dpa.Component", {
 
   createContent : function() {
 
     // create root view
     var oView = sap.ui.view({
       id : "app",
-      viewName : "abat.Mockup.view.App",
+      viewName : "dpa.view.App",
       type : "JS",
       viewData : {
         component : this
@@ -15,7 +15,7 @@ sap.ui.core.UIComponent.extend("abat.Mockup.Component", {
     });
 
     // set data model on root view
-    var oModel = new sap.ui.model.json.JSONModel("model/mock.json");
+    var oModel = new sap.ui.model.json.JSONModel("model/projects.json");
     oView.setModel(oModel);
 
     // set i18n model

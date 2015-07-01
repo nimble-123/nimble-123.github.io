@@ -1,4 +1,4 @@
-sap.ui.controller("abat.Mockup.view.App", {
+sap.ui.controller("dpa.view.App", {
 
   /**
    * Navigates to another page
@@ -15,7 +15,7 @@ sap.ui.controller("abat.Mockup.view.App", {
     if (app.getPage(pageId, master) === null) {
       var page = sap.ui.view({
         id : pageId,
-        viewName : "abat.Mockup.view." + pageId,
+        viewName : "dpa.view." + pageId,
         type : "XML"
       });
       page.getController().nav = this;

@@ -1,0 +1,85 @@
+{
+  "Projects":[
+    {
+      "id":"W-02880",
+      "name":"Ben Aketil",
+      "state":"active",
+      "progress":73,
+      "category":"normal",
+      "documents":[
+        {
+          "id":"d346ca4776c8515b53b779f90c519022",
+          "name":"Anfahrtsbeschreibung"
+        }
+      ],
+      "address":{
+        "Street":"Legalstreet 22",
+        "City":"Isle of Skye",
+        "ZipCode":"1234",
+        "Country":"United Kingdom"
+      },
+      "contract":{
+        "name":"",
+        "wea_count":"24",
+        "wea_type":"E-128",
+        "value": "26.000.000,00",
+        "currency": "EUR",
+        "extras":"/w substation"
+      }
+    },
+    {
+      "id":"W-08890",
+      "name":"Windpark Brockhausen",
+      "state":"completed",
+      "progress":100,
+      "category":"normal",
+      "documents":[
+        {
+          "id":"b779f90c5b53519d346ca4776c851022",
+          "name":"Anfahrtsbeschreibung"
+        }
+      ],
+      "address":{
+        "Street":"Am Dom 12",
+        "City":"Cologne",
+        "ZipCode":"12346",
+        "Country":"Germany"
+      },
+      "contract":{
+        "name":"",
+        "wea_count":"24",
+        "wea_type":"E-128",
+        "value":"26.000.000,00",
+        "currency": "EUR",
+        "extras":"/w substation"
+      }
+    },
+    {
+      "id":"W-08956",
+      "name":"Smulgedon Wind Farm",
+      "state":"warning",
+      "progress":21,
+      "category":"EPC",
+      "documents":[
+        {
+          "id":"776c85164f90ca495b53b77d3c519022",
+          "name":"Anfahrtsbeschreibung"
+        }
+      ],
+      "address":{
+        "Street":"Legalstreet 22",
+        "City":"Isle of Skye",
+        "ZipCode":"1234",
+        "Country":"United Kingdom"
+      },
+      "contract":{
+        "name":"",
+        "wea_count":"24",
+        "wea_type":"E-128",
+        "value":"26.000.000,00",
+        "currency": "EUR",
+        "extras":"/w substation"
+      }
+    }
+  ]
+}

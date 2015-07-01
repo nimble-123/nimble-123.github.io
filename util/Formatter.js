@@ -1,17 +1,17 @@
-jQuery.sap.declare("abat.Mockup.util.Formatter");
+jQuery.sap.declare("dpa.util.Formatter");
 
 jQuery.sap.require("sap.ui.core.format.DateFormat");
 
-abat.Mockup.util.Formatter = {
+dpa.util.Formatter = {
 
   _statusStateMap : {
-    "lieferbar" : "Success",
-    "bald lieferbar" : "Warning",
-    "ausverkauft" : "Error"
+    "completed" : "Success",
+    "active" : "Warning",
+    "warning" : "Error"
   },
 
   statusState : function(value) {
-    var map = abat.Mockup.util.Formatter._statusStateMap;
+    var map = dpa.util.Formatter._statusStateMap;
     return (value && map[value]) ? map[value] : "None";
   },
 

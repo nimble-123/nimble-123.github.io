@@ -1,12 +1,20 @@
-jQuery.sap.require("abat.Mockup.util.Formatter");
+jQuery.sap.require("dpa.util.Formatter");
 jQuery.sap.require("sap.m.MessageBox");
 jQuery.sap.require("sap.m.MessageToast");
 
-sap.ui.controller("abat.Mockup.view.Detail", {
+sap.ui.controller("dpa.view.Detail", {
 
   onInit : function(evt) {
-    this.configForecastChart();
-    this.configOrderProposalChart();
+
+  },
+  
+  handleCheckBox: function(evt) {
+	var oCheckBox = evt.getSource();
+	console.log(oCheckBox.getChecked());
+  },
+  
+  handleKundenDokuBtn: function(evt) {
+	  alert("Kundendokumentation erstellt und zum Export bereit");
   },
 
   handleForecastDataSelect : function(evt) {
@@ -42,54 +50,4 @@ sap.ui.controller("abat.Mockup.view.Detail", {
     bundle.getText("ApproveDialogTitle"));
   },
 
-  configForecastChart : function() {
-    var oDatasetForecast = new sap.viz.ui5.data.FlattenedDataset({
-      dimensions : [ {
-        axis : 1,
-        name : 'Month',
-        value : "{Month}"
-      } ],
-      measures : [ {
-        name : 'Menge1',
-        value : '{Menge1}'
-      }, {
-        name : 'Menge2',
-        value : '{Menge2}'
-      } ],
-      data : {
-        path : "ForecastData"
-      }
-    });
-
-    var oLineChart = this.getView().byId("lineChart");
-    oLineChart.setTitle(new sap.viz.ui5.types.Title({
-      visible : true,
-      text : "{i18n>ForecastChartTitle}"
-    }));
-    oLineChart.setDataset(oDatasetForecast);
-  },
-
-  configOrderProposalChart : function() {
-    var oDatasetOrderProposal = new sap.viz.ui5.data.FlattenedDataset({
-      dimensions : [ {
-        axis : 1,
-        name : 'Month',
-        value : "{Month}"
-      } ],
-      measures : [ {
-        name : 'Menge1',
-        value : '{Menge1}'
-      } ],
-      data : {
-        path : "OrderProposalData"
-      }
-    });
-
-    var oBarChart = this.getView().byId("barChart");
-    oBarChart.setTitle(new sap.viz.ui5.types.Title({
-      visible : true,
-      text : "{i18n>OrderProposalChartTitle}"
-    }));
-    oBarChart.setDataset(oDatasetOrderProposal);
-  }
 });

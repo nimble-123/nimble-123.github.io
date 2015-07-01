@@ -1,6 +1,6 @@
-jQuery.sap.declare("abat.Mockup.util.Grouper");
+jQuery.sap.declare("dpa.util.Grouper");
 
-abat.Mockup.util.Grouper = {
+dpa.util.Grouper = {
 
   Status : function(oContext) {
     var status = oContext.getProperty("Status");

@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<l:Grid
+		defaultSpan="L12 M12 S12"
+		width="auto">
+		<l:content>
+			<f:SimpleForm
+				minWidth="1024"
+				maxContainerCols="2"
+				editable="false"
+				layout="ResponsiveGridLayout"
+				title="{i18n>Contract_Title}"
+				labelSpanL="3"
+				labelSpanM="3"
+				emptySpanL="4"
+				emptySpanM="4"
+				columnsL="1"
+				columnsM="1">
+				<f:content>
+					<Label text="{i18n>Contract_Number_of_WEA}" />
+					<Text text="{contract/wea_count}" />
+					<Label text="{i18n>Contract_Type_of_WEA}" />
+					<Text text="{contract/wea_type}" />
+					<Label text="{i18n>Contract_Value}" />
+					<Text text="{contract/value} {contract/currency}" />
+					<Label text="{i18n>Contract_extras}" />
+					<Text text="{contract/extras}" />
+				</f:content>
+			</f:SimpleForm>
+		</l:content>
+	</l:Grid>
+</core:FragmentDefinition>

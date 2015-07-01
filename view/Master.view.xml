@@ -1,37 +1,26 @@
-<core:View controllerName="abat.Mockup.view.Master" xmlns="sap.m"
+<core:View controllerName="dpa.view.Master" xmlns="sap.m"
   xmlns:core="sap.ui.core">
-  <Page>
-    <customHeader>
-      <Bar>
-        <contentLeft>
-          <Image src="img/logo.png" width="173px" height="30px"></Image>
-        </contentLeft>
-      </Bar>
-    </customHeader>
-    <subHeader>
-      <Bar>
-        <contentLeft>
-          <SearchField search="handleSearch" width="100%">
-          </SearchField>
-        </contentLeft>
-      </Bar>
-    </subHeader>
+  <Page title="{i18n&gt;Title_MasterPage}">
+		<subHeader>
+			<Bar id="searchBar">
+				<contentMiddle>
+					<SearchField id="searchField" showRefreshButton="{device>/isNoTouch}"
+						search="handleSearch" width="100%">
+					</SearchField>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
     <List id="list" mode="{device>/listMode}" select="handleListSelect"
-      items="{/Products}">
-      <ObjectListItem type="{device>/listItemType}"
-        press="handleListItemPress" title="{MaterialName}" number="{Quantity}"
-        numberUnit="{i18n&gt;QuantityUnit}"
-        numberState="{parts : [ 'Quantity', 'MinimalQuantity' ],
-                      formatter : 'abat.Mockup.util.Formatter.numberState'}">
+      items="{/Projects}">
+      
+      <items><ObjectListItem type="{device&gt;/listItemType}" press="handleListItemPress" title="{id}" number="{progress}" numberUnit="{i18n&gt;MasterPage_ObjectHeader_QuantityUnit}">
         <attributes>
-          <ObjectAttribute text="{MatId}" />
+          <ObjectAttribute text="{name}" />
         </attributes>
         <firstStatus>
-          <ObjectStatus text="{Status}"
-            state="{path: 'Status',formatter: 'abat.Mockup.util.Formatter.statusState'}" />
+          <ObjectStatus text="{state}" state="{path: 'state',formatter: 'dpa.util.Formatter.statusState'}" />
         </firstStatus>
-      </ObjectListItem>
-    </List>
+      </ObjectListItem></items></List>
     <footer>
       <Bar>
         <contentRight>
